@@ -14,9 +14,11 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Map;
 
+import static com.kostyuk.requests.BaseRequest.checkErrorResponse;
 import static com.kostyuk.requests.BaseRequest.checkResponseCode;
 import static com.kostyuk.requests.CreateUser.checkSuccessfulUserRegistrationResponse;
 import static com.kostyuk.requests.CreateUser.createUser;
+import static com.kostyuk.utils.ErrorMessages.MISSING_PASSWORD;
 
 @Epic("Api tests")
 @Feature("Create user request tests")
@@ -37,6 +39,15 @@ public class RegistrationTest {
         Response response = createUser(testValues.get("email"), testValues.get("password"));
         checkResponseCode(response, HttpStatus.SC_OK);
         checkSuccessfulUserRegistrationResponse(response);
+    }
+
+    @Test
+    @DisplayName("Negative test case without password")
+    @Description("Negative test case. No password. Should return code 400 and error message")
+    public void negativeWithoutPasswordCode400AndErrorMessage() {
+        Response response = createUser(testValues.get("email"), null);
+        checkResponseCode(response, HttpStatus.SC_BAD_REQUEST);
+        checkErrorResponse(response, MISSING_PASSWORD);
     }
 
     @AfterEach
