@@ -4,9 +4,13 @@ import com.kostyuk.selenium.pom.CartPage;
 import com.kostyuk.selenium.pom.ItemPage;
 import com.kostyuk.selenium.pom.MainPage;
 import com.kostyuk.selenium.utils.WebDriverFactory;
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
 import io.qameta.allure.Step;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -19,6 +23,9 @@ import java.util.Map;
 
 import static com.kostyuk.selenium.utils.DataUtils.generateUserTestData;
 
+@Epic("UI tests")
+@Feature("Registration and order tests")
+@DisplayName("Registration and order tests")
 public class RegistrationAndOrderTests {
     private WebDriver driver;
     private MainPage mainPage;
@@ -38,6 +45,8 @@ public class RegistrationAndOrderTests {
     }
 
     @Test
+    @DisplayName("Positive test")
+    @Description("Should register with random data, login, order 1 item from each category, check total price in cart equals to expected, place order and check if order date is today")
     public void positiveRegistrationAndOrder() {
         mainPage.open();
         mainPage.register(testData.get("name"), testData.get("password"));
