@@ -11,10 +11,18 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class User extends BaseRequest {
 
+    private static final String USERS_BASE = "/users/";
+
     @Step("Sending request to get user list")
     public static Response getUserList() {
         return RestAssured.given()
-                .get("/users");
+                .get(USERS_BASE);
+    }
+
+    @Step("Sending delete user request with userId = {userId}")
+    public static Response deleteUser(int userId) {
+        return RestAssured.given()
+                .delete(USERS_BASE + userId);
     }
 
     @Step("Checking if user list response has a valid structure")
