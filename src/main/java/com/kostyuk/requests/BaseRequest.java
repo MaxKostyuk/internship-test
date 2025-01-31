@@ -41,4 +41,9 @@ public class BaseRequest {
         assertEquals(message, responseObject.getError(), "Received error message " + responseObject.getError() + " is not equal to expected " + message);
 
     }
+
+    @Step("Checking response has no body")
+    public static void checkResponseHasNoBody(Response response) {
+        assertTrue(response.asString().isEmpty());
+    }
 }
