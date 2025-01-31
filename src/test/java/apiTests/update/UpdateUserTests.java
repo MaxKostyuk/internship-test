@@ -8,9 +8,9 @@ import org.junit.jupiter.api.*;
 
 import java.util.Map;
 
-import static com.kostyuk.requests.BaseRequest.checkResponseCode;
-import static com.kostyuk.requests.User.*;
-import static com.kostyuk.utils.TestUtils.generateCorrectUserUpdateData;
+import static com.kostyuk.api.requests.BaseRequest.checkResponseCode;
+import static com.kostyuk.api.requests.User.*;
+import static com.kostyuk.api.utils.TestUtils.generateCorrectUserUpdateData;
 
 @Epic("Api tests")
 @Feature("Update user request tests")

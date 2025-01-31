@@ -1,11 +1,12 @@
-package com.kostyuk.requests;
+package com.kostyuk.api.requests;
 
-import com.kostyuk.models.UpdateUserBody;
-import com.kostyuk.models.UpdateUserResponse;
-import com.kostyuk.models.UserList;
+import com.kostyuk.api.models.UpdateUserBody;
+import com.kostyuk.api.models.UpdateUserResponse;
+import com.kostyuk.api.models.UserList;
 import io.qameta.allure.Step;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
+import org.junit.jupiter.api.Assertions;
 
 import java.time.Duration;
 import java.time.OffsetDateTime;
@@ -40,7 +41,7 @@ public class User extends BaseRequest {
 
     @Step("Checking if user list response has a valid structure")
     public static void checkUserListResponse(Response response) {
-        UserList userList = assertDoesNotThrow(() -> fromJson(response.asString(), UserList.class), "Response has unexpected structure");
+        UserList userList = Assertions.assertDoesNotThrow(() -> fromJson(response.asString(), UserList.class), "Response has unexpected structure");
         assertAll(() -> assertNotNull(userList.getPage(), "Page field shouldn't be null"),
                 () -> assertNotNull(userList.getPerPage(), "PerPage field shouldn't be null"),
                 () -> assertNotNull(userList.getTotal(), "Total field shouldn't be null"),
@@ -57,7 +58,7 @@ public class User extends BaseRequest {
 
     @Step("Checking update user response body")
     public static void checkUpdateUserResponseBody(Response response, String name, String job) {
-        UpdateUserResponse updateUserResponse = assertDoesNotThrow(() -> fromJson(response.asString(), UpdateUserResponse.class), "Response has unexpected structure");
+        UpdateUserResponse updateUserResponse = Assertions.assertDoesNotThrow(() -> fromJson(response.asString(), UpdateUserResponse.class), "Response has unexpected structure");
         assertAll(() -> assertNotNull(updateUserResponse.getName(), "Name field shouldn't be null"),
                 () -> assertNotNull(updateUserResponse.getJob(), "Job field shouldn't be null"),
                 () -> assertNotNull(updateUserResponse.getUpdatedAt(), "UpdatedAt field shouldn't be null"),
@@ -69,7 +70,7 @@ public class User extends BaseRequest {
     @Step("Checking if update time in response is less then {timeOffset} ms")
     public static void checkTimeInResponseLessThenOffset(Response response, long millisecondsOffset) {
         OffsetDateTime now = OffsetDateTime.now(ZoneOffset.UTC);
-        OffsetDateTime responseTime = assertDoesNotThrow(() -> fromJson(response.path("updatedAt").toString(), OffsetDateTime.class));
+        OffsetDateTime responseTime = Assertions.assertDoesNotThrow(() -> fromJson(response.path("updatedAt").toString(), OffsetDateTime.class));
         OffsetDateTime updatedAtUtc = responseTime.withOffsetSameInstant(ZoneOffset.UTC);
         long timeDifference = Duration.between(updatedAtUtc, now).toMillis();
         assertTrue(timeDifference < millisecondsOffset, "Time difference between time in response and check moment is more than " + millisecondsOffset + " milliseconds");

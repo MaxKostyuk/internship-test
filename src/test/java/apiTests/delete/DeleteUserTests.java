@@ -8,9 +8,9 @@ import org.apache.http.HttpStatus;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static com.kostyuk.requests.BaseRequest.checkResponseCode;
-import static com.kostyuk.requests.BaseRequest.checkResponseHasNoBody;
-import static com.kostyuk.requests.User.deleteUser;
+import static com.kostyuk.api.requests.BaseRequest.checkResponseCode;
+import static com.kostyuk.api.requests.BaseRequest.checkResponseHasNoBody;
+import static com.kostyuk.api.requests.User.deleteUser;
 
 @Epic("Api tests")
 @Feature("Delete user request tests")

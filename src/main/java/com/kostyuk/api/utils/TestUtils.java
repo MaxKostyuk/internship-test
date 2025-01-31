@@ -1,4 +1,4 @@
-package com.kostyuk.utils;
+package com.kostyuk.api.utils;
 
 import java.util.Map;
 

@@ -10,8 +10,8 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static com.kostyuk.requests.BaseRequest.checkResponseCode;
-import static com.kostyuk.requests.User.*;
+import static com.kostyuk.api.requests.BaseRequest.checkResponseCode;
+import static com.kostyuk.api.requests.User.*;
 
 @Epic("Api tests")
 @Feature("Get user list request tests")

@@ -1,4 +1,4 @@
-package com.kostyuk.models;
+package com.kostyuk.api.models;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

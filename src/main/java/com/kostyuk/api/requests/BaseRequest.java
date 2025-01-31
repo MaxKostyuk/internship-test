@@ -1,10 +1,10 @@
-package com.kostyuk.requests;
+package com.kostyuk.api.requests;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import com.kostyuk.models.ErrorResponse;
+import com.kostyuk.api.models.ErrorResponse;
 import io.qameta.allure.Step;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;

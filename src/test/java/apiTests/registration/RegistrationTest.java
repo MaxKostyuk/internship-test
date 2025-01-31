@@ -1,6 +1,6 @@
 package apiTests.registration;
 
-import com.kostyuk.utils.TestUtils;
+import com.kostyuk.api.utils.TestUtils;
 import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
@@ -14,11 +14,11 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Map;
 
-import static com.kostyuk.requests.BaseRequest.checkErrorResponse;
-import static com.kostyuk.requests.BaseRequest.checkResponseCode;
-import static com.kostyuk.requests.CreateUser.checkSuccessfulUserRegistrationResponse;
-import static com.kostyuk.requests.CreateUser.createUser;
-import static com.kostyuk.utils.ErrorMessages.MISSING_PASSWORD;
+import static com.kostyuk.api.requests.BaseRequest.checkErrorResponse;
+import static com.kostyuk.api.requests.BaseRequest.checkResponseCode;
+import static com.kostyuk.api.requests.CreateUser.checkSuccessfulUserRegistrationResponse;
+import static com.kostyuk.api.requests.CreateUser.createUser;
+import static com.kostyuk.api.utils.ErrorMessages.MISSING_PASSWORD;
 
 @Epic("Api tests")
 @Feature("Create user request tests")
