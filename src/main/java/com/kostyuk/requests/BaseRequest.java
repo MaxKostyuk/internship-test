@@ -3,6 +3,7 @@ package com.kostyuk.requests;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.kostyuk.models.ErrorResponse;
 import io.qameta.allure.Step;
 import io.restassured.RestAssured;
@@ -18,6 +19,7 @@ public class BaseRequest {
     static {
         RestAssured.baseURI = "https://reqres.in/api";
         mapper = new ObjectMapper();
+        mapper.registerModule(new JavaTimeModule());
         mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, true);
         mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
         RestAssured.config = RestAssured.config()
