@@ -9,6 +9,7 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
+        <selenium.version>4.25.0</selenium.version>
         <allure.version>2.26.0</allure.version>
         <junit.version>5.10.2</junit.version>
         <restassured.version>5.5.0</restassured.version>
@@ -44,6 +45,11 @@
     </dependencyManagement>
 
     <dependencies>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>${selenium.version}</version>
+        </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
