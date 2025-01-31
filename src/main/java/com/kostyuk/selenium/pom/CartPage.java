@@ -49,10 +49,10 @@ public class CartPage {
     }
 
     @Step("Placing the order")
-    public void placeOrder() {
+    public void placeOrder(String name, String card) {
         clickPlaceOrderButton();
-        fillNameField("name");
-        fillCardField("123");
+        fillNameField(name);
+        fillCardField(card);
         clickPurchaseButton();
     }
 
